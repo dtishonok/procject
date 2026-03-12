@@ -1,11 +1,13 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../context/AuthContext'; // Проверьте: папка 'context' с маленькой буквы?
-import { useLanguage } from '../../language-context/LanguageContext'; // Исправил путь на маленькие буквы
+import { AuthContext } from '../../context/AuthContext';
+// Исправлено: импортируем хук useLanguage и правильный путь
+import { useLanguage } from '../../LanguageContext/LanguageContext.js'; 
 
 const Navbar = () => {
   const { logout, isLogin, isAdmin } = useContext(AuthContext);
-  const { lang, toggleLang, t } = useLanguage();
+  // Теперь хук будет работать правильно
+  const { lang, toggleLang, t } = useLanguage(); 
   const navigate = useNavigate();
   const [searchValue, setSearchValue] = useState('');
   const [isDark, setIsDark] = useState(localStorage.getItem('theme') === 'dark');
@@ -25,7 +27,6 @@ const Navbar = () => {
   return (
     <nav>
       <div className="nav-wrapper container">
-        {/* Добавил проверку на наличие t, чтобы билд не падал если контекст еще грузится */}
         <Link to="/" className="brand-logo">Inventory App</Link>
         
         <ul id="nav-mobile" className="right hide-on-med-and-down">
