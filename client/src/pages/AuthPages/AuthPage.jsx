@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from '../../context/AuthContext';
-import M from 'materialize-css'; // Добавил уведомления
+import M from 'materialize-css'; 
 import './AuthPage.scss';
 
 const AuthPage = () => {
@@ -56,7 +56,7 @@ const AuthPage = () => {
                 type="email"
                 name="email"
                 id="email"
-                value={form.email} // ВАЖНО: добавлено value
+                value={form.email} 
                 onChange={changeHandler}
                 required
               />
@@ -68,7 +68,7 @@ const AuthPage = () => {
                 type="password"
                 name="password"
                 id="password"
-                value={form.password} // ВАЖНО: добавлено value
+                value={form.password} 
                 onChange={changeHandler}
                 required
               />
