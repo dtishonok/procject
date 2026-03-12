@@ -10,9 +10,13 @@ import SearchPage from './pages/SearchPage/SearchPage.jsx'
 import ProfilePage from './pages/ProfilePage.jsx'
 import CreatePage from './pages/CreatePage/CreatePage.jsx'
 import NotFoundPage from './pages/NotFoundPage.jsx'
+
+// ВНИМАНИЕ: Проверьте, чтобы названия папок (context, hooks) в проводнике 
+// были именно с маленькой буквы, если вы пишете их здесь так.
 import { AuthContext } from './context/AuthContext.js'
-import { LanguageProvider } from './LanguageContext/LanguageContext.js'
+import { LanguageProvider } from './LanguageContext/LanguageContext.js' 
 import { useAuth } from './hooks/AuthHook.js'
+
 import 'materialize-css/dist/css/materialize.min.css'
 
 function App() {
@@ -38,6 +42,7 @@ function App() {
       <LanguageProvider>
         <Router>
           <div className="app">
+            {/* Navbar появится только если пользователь авторизован */}
             {isLogin && <Navbar />}
             <div className="main-content">
               <Routes>

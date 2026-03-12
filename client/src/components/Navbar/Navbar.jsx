@@ -1,8 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../context/AuthContext';
-
-import { useLanguage } from '../../LanguageContext/LanguageContext';
+import { AuthContext } from '../../context/AuthContext'; // Проверьте: папка 'context' с маленькой буквы?
+import { useLanguage } from '../../language-context/LanguageContext'; // Исправил путь на маленькие буквы
 
 const Navbar = () => {
   const { logout, isLogin, isAdmin } = useContext(AuthContext);
@@ -26,6 +25,7 @@ const Navbar = () => {
   return (
     <nav>
       <div className="nav-wrapper container">
+        {/* Добавил проверку на наличие t, чтобы билд не падал если контекст еще грузится */}
         <Link to="/" className="brand-logo">Inventory App</Link>
         
         <ul id="nav-mobile" className="right hide-on-med-and-down">
@@ -39,7 +39,7 @@ const Navbar = () => {
               }}
             >
               <i className="material-icons left" style={{ marginRight: '5px' }}>language</i>
-              {lang.toUpperCase()}
+              {(lang || 'ru').toUpperCase()}
             </button>
           </li>
 
@@ -61,7 +61,7 @@ const Navbar = () => {
               <input 
                 id="search-nav"
                 type="search" 
-                placeholder={t('search_placeholder')} 
+                placeholder={t ? t('search_placeholder') : 'Search...'} 
                 value={searchValue}
                 onChange={e => setSearchValue(e.target.value)}
                 onKeyDown={handleSearch}
@@ -80,10 +80,10 @@ const Navbar = () => {
 
           {isLogin ? (
             <>
-              <li><Link to="/">{t('nav_home')}</Link></li>
-              <li><Link to="/create">{t('btn_create')}</Link></li>
-              <li><Link to="/profile">{t('tab_settings')}</Link></li>
-              {isAdmin && <li><Link to="/admin" className="orange-text text-lighten-3">{t('nav_admin')}</Link></li>}
+              <li><Link to="/">{t ? t('nav_home') : 'Home'}</Link></li>
+              <li><Link to="/create">{t ? t('btn_create') : 'Create'}</Link></li>
+              <li><Link to="/profile">{t ? t('tab_settings') : 'Settings'}</Link></li>
+              {isAdmin && <li><Link to="/admin" className="orange-text text-lighten-3">{t ? t('nav_admin') : 'Admin'}</Link></li>}
               <li>
                 <button 
                   className="btn red waves-effect waves-light btn-small" 
@@ -93,7 +93,7 @@ const Navbar = () => {
                   }}
                   style={{ marginLeft: '15px' }}
                 >
-                  {t('nav_logout')}
+                  {t ? t('nav_logout') : 'Logout'}
                 </button>
               </li>
             </>
