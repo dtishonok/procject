@@ -1,0 +1,18 @@
+.admin-page {
+  padding: 20px;
+  
+  .admin-toolbar {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .selected-row {
+    background-color: #e3f2fd !important;
+  }
+
+  .chip {
+    margin: 2px;
+  }
+}

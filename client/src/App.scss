@@ -1,0 +1,132 @@
+:root {
+  --bg-color: #f5f7fa;
+  --text-color: #2c3e50;
+  --card-bg: #ffffff;
+  --nav-bg: #1565c0;
+  --border-color: #e0e0e0;
+  --code-bg: rgba(27, 31, 35, 0.05);
+  --blockquote-color: #6a737d;
+}
+
+[data-theme='dark'] {
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --card-bg: #1e1e1e;
+  --nav-bg: #000000;
+  --border-color: #333333;
+  --code-bg: rgba(255, 255, 255, 0.1);
+  --blockquote-color: #b0b0b0;
+}
+
+body {
+  background-color: var(--bg-color) !important;
+  color: var(--text-color) !important;
+  font-family: 'Roboto', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin: 0;
+}
+
+.main-content {
+  padding-bottom: 50px;
+}
+
+nav {
+  background-color: var(--nav-bg) !important;
+  transition: background-color 0.3s ease;
+}
+
+.markdown-body {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-color);
+
+  h1, h2, h3 { 
+    border-bottom: 1px solid var(--border-color); 
+    padding-bottom: 0.3em; 
+    margin-top: 24px;
+    color: var(--text-color);
+  }
+
+  code {
+    background-color: var(--code-bg);
+    border-radius: 3px;
+    padding: 0.2em 0.4em;
+    font-family: 'Courier New', Courier, monospace;
+    color: #ff79c6; // Розовый акцент для кода остается для контраста
+  }
+
+  blockquote {
+    border-left: 0.25em solid #2196f3;
+    color: var(--blockquote-color);
+    padding: 0 1em;
+    margin: 20px 0;
+  }
+
+  ul { 
+    padding-left: 2em; 
+    list-style-type: disc !important; 
+    li { 
+      list-style-type: disc !important;
+      color: var(--text-color);
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(15px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+.card, .card-panel {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+  border: 1px solid var(--border-color);
+  animation: fadeIn 0.4s ease-out forwards;
+  border-radius: 8px;
+  overflow: hidden;
+  
+  &.hoverable:hover {
+    box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  }
+
+  .card-title {
+    color: var(--text-color) !important;
+  }
+}
+
+.chip {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background-color: #2196f3 !important;
+    color: white !important;
+    transform: scale(1.05);
+  }
+}
+
+.bold { font-weight: 700 !important; }
+.uppercase { text-transform: uppercase; }
+.w100 { width: 100%; }
+
+table {
+  color: var(--text-color);
+}
+
+table.highlight tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+input, textarea {
+  color: var(--text-color) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+}
